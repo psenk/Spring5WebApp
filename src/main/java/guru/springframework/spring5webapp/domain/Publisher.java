@@ -1,8 +1,15 @@
 package guru.springframework.spring5webapp.domain;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Publisher {
@@ -14,6 +21,10 @@ public class Publisher {
 
     private String name;
     private String[] address; // line, city, state, zip
+
+    @OneToMany
+    @JoinColumn(name = "publisher_id")
+    private Set<Book> books = new HashSet<>();
 
     // constructors
     public Publisher() {
@@ -47,6 +58,14 @@ public class Publisher {
 
     public void setAddress(String[] address) {
         this.address = address;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     // misc
