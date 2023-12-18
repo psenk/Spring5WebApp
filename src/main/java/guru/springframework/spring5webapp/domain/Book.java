@@ -1,4 +1,4 @@
-package guru.springframework.spring5webapp.s5webapp;
+package guru.springframework.spring5webapp.domain;
 
 import java.util.Set;
 
@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 @Entity
 public class Book {
 
+    // variables
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,6 +20,8 @@ public class Book {
         inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors;
 
+
+    // constructors
     public Book() {
     }
 
@@ -28,6 +31,8 @@ public class Book {
         this.authors = authors;
     }
 
+
+    // getters/setters
     public Long getId() {
         return id;
     }
@@ -60,6 +65,7 @@ public class Book {
         this.authors = authors;
     }
 
+    // misc
     @Override
     public int hashCode() {
         final int prime = 31;
