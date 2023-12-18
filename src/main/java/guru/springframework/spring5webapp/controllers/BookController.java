@@ -19,8 +19,9 @@ public class BookController {
     public String getBooks(Model model) {
 
         model.addAttribute("books", bookRepository.findAll());
+        System.out.println("Opening /books/list page");
 
-        return "books";
+        return "books/list";
     }
 
 }
